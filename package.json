@@ -1,0 +1,9 @@
+{
+  "name": "ecommerce-mern",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --parallel --filter client --filter server dev",
+    "build": "pnpm --filter client build"
+  }
+}
