@@ -41,7 +41,15 @@ export default function CheckoutPage() {
       // 1. Create Razorpay order
       const { data: rzpData } = await api.post('/payment/create-order', { amount: total });
 
-      // 2. Open Razorpay checkout
+      // 2. Create order in our DB (mark as pending)
+      const cartItems = items.map(i => ({ product: i._id, quantity: i.quantity }));
+      const { data: order } = await api.post('/orders', {
+        items: cartItems,
+        shippingAddress: form,
+        razorpayOrderId: rzpData.orderId,
+      });
+
+      // 3. Open Razorpay checkout
       const options = {
         key: rzpData.keyId,
         amount: rzpData.amount,
@@ -53,14 +61,6 @@ export default function CheckoutPage() {
         theme: { color: '#4f46e5' },
         handler: async (response) => {
           try {
-            // 3. Create order in our DB
-            const cartItems = items.map(i => ({ product: i._id, quantity: i.quantity }));
-            const { data: order } = await api.post('/orders', {
-              items: cartItems,
-              shippingAddress: form,
-              razorpayOrderId: response.razorpay_order_id,
-            });
-
             // 4. Verify payment
             await api.post('/payment/verify', {
               razorpayOrderId: response.razorpay_order_id,
