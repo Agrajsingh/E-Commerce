@@ -1,6 +1,6 @@
 # 🛒 Premium MERN E-Commerce Platform
 
-A state-of-the-art, full-stack e-commerce solution built with the MERN stack, featuring a professional MVC architecture, secure Razorpay integration, and a sleek responsive UI.
+ full-stack e-commerce solution built with the MERN stack, featuring a professional MVC architecture, secure Razorpay integration, and a sleek responsive UI.
 
 ## ✨ Features
 
@@ -11,49 +11,56 @@ A state-of-the-art, full-stack e-commerce solution built with the MERN stack, fe
 - **🔍 Advanced Search**: Full-text search and category filtering.
 - **🎨 Modern UI**: Built with React and Tailwind CSS for a premium aesthetic.
 
+---
+
+## 🧪 Quick Start & Demo
+
+To test the application immediately, use the following pre-configured accounts:
+
+| Role | Email | Password | Features to Test |
+| :--- | :--- | :--- | :--- |
+| **Buyer** 👤 | `buyer@example.com` | `password123` | Browsing, Cart, Wishlist, Order History |
+| **Seller** 🏪 | `seller@example.com` | `password123` | Dashboard, Product Management, Seller Profile |
+
+> [!TIP]
+> You can also register a new account and choose your role (Buyer/Seller) during registration.
+
+---
+
 ## 🛠️ Technology Stack
 
-- **Frontend**: React (Vite), Tailwind CSS, Lucide Icons
-- **Backend**: Node.js, Express.js (MVC Pattern)
+- **Frontend**: React (Vite), Tailwind CSS, Lucide Icons, React Hot Toast
+- **Backend**: Node.js, Express.js (MVC Architecture)
 - **Database**: MongoDB (Mongoose)
 - **Payments**: Razorpay SDK
 - **Email**: Nodemailer (Gmail integration)
 
 ---
 
-## 🧪 Demo Credentials
-
-To test the application immediately, use the following accounts:
-
-| Role | Email | Password |
-| :--- | :--- | :--- |
-| **Buyer** | `buyer@example.com` | `password123` |
-| **Seller** | `seller@example.com` | `password123` |
-
-*Note: You can also register a new account and choose your role.*
-
----
-
-## 💻 Getting Started
+## 💻 Installation & Setup
 
 ### 1. Prerequisites
 - Node.js (v18+)
 - MongoDB Atlas (or local instance)
 - Razorpay Key ID & Secret
 
-### 2. Installation
+### 2. Implementation
 ```bash
-# Install server dependencies
-cd server
-npm install
+# Clone the repository
+git clone https://github.com/your-repo/ecommerce-mern.git
+cd ecommerce-mern
 
-# Install client dependencies
-cd ../client
-npm install
+# Install dependencies for both client and server
+# From root using pnpm (if available)
+pnpm install
+
+# Alternatively, manual install
+cd server && npm install
+cd ../client && npm install
 ```
 
 ### 3. Environment Setup
-Create a `.env` file in the `server` directory with the following variables:
+Create a `.env` file in the `server` directory:
 ```env
 PORT=5000
 MONGO_URI=your_mongodb_uri
@@ -64,39 +71,45 @@ RAZORPAY_KEY_SECRET=your_razorpay_secret
 CLIENT_URL=http://localhost:5173
 ```
 
-### 4. Seed the Database
-Populate the application with premium demo products:
+### 4. Database Seeding
+Populate the database with premium demo products:
 ```bash
 cd server
 node seed.js
 ```
 
-### 5. Run the Application
+### 5. Running the App
 ```bash
-# In server directory
+# Run server (from server directory)
 npm run dev
 
-# In client directory
+# Run client (from client directory)
 npm run dev
 ```
 
 ---
 
-## 📂 Project Structure (MVC)
+## 📂 Project Structure
 
 ```text
 ecommerce-mern/
 ├── server/
 │   ├── src/
-│   │   ├── controllers/  # Business logic (Refactored)
-│   │   ├── models/       # Mongoose schemas
-│   │   ├── routes/       # Express route definitions
-│   │   ├── middleware/   # Auth, Upload, Error handling
-│   │   └── index.js      # Entry point
-│   └── seed.js           # Database seeding utility
+│   │   ├── controllers/  # Refactored MVC Logic
+│   │   ├── models/       # Mongoose Data Schemas
+│   │   ├── routes/       # API Route Definitions
+│   │   ├── middleware/   # Authentication & Uploads
+│   │   └── index.js      # Server Entry Point
+│   └── seed.js           # DB Seeding Utility
 └── client/
     ├── src/
-    │   ├── pages/        # React page components
-    │   ├── components/   # Reusable UI elements
-    │   └── context/      # State management (Auth, Cart)
+    │   ├── pages/        # React Route Components
+    │   ├── components/   # Modular UI Elements
+    │   ├── context/      # Auth & Cart State Management
+    │   └── lib/          # Utilities & API Config
 ```
+
+
+---
+
+

@@ -26,7 +26,7 @@ export default function Navbar() {
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-6 text-sm font-medium text-gray-700">
             <Link to="/products" className="hover:text-primary-600 transition-colors">Browse</Link>
-            {!user && <>
+            {!user?.email && <>
               <Link to="/login" className="hover:text-primary-600 transition-colors">Login</Link>
               <Link to="/register" className="btn-primary text-sm py-2 px-4">Sign Up</Link>
             </>}
@@ -47,7 +47,7 @@ export default function Navbar() {
                 <Link to="/seller/orders" className="hover:text-primary-600">Orders</Link>
               </>
             )}
-            {user && (
+            {user?.email && (
               <div className="relative">
                 <button onClick={() => setDropOpen(!dropOpen)} className="flex items-center gap-2 hover:text-primary-600">
                   <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center">
@@ -80,11 +80,11 @@ export default function Navbar() {
       {menuOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 px-4 py-3 flex flex-col gap-3 text-sm">
           <Link to="/products" onClick={() => setMenuOpen(false)} className="py-1 hover:text-primary-600">Browse</Link>
-          {!user && <>
+          {!user?.email && <>
             <Link to="/login" onClick={() => setMenuOpen(false)} className="py-1">Login</Link>
             <Link to="/register" onClick={() => setMenuOpen(false)} className="btn-primary text-center">Sign Up</Link>
           </>}
-          {user && !isSeller && <>
+          {user?.email && !isSeller && <>
             <Link to="/cart" onClick={() => setMenuOpen(false)} className="py-1">Cart ({count})</Link>
             <Link to="/orders" onClick={() => setMenuOpen(false)} className="py-1">Orders</Link>
             <Link to="/wishlist" onClick={() => setMenuOpen(false)} className="py-1">Wishlist</Link>
@@ -95,7 +95,7 @@ export default function Navbar() {
             <Link to="/seller/products" onClick={() => setMenuOpen(false)} className="py-1">Products</Link>
             <Link to="/seller/orders" onClick={() => setMenuOpen(false)} className="py-1">Orders</Link>
           </>}
-          {user && <button onClick={handleLogout} className="py-1 text-red-600 text-left">Logout</button>}
+          {user?.email && <button onClick={handleLogout} className="py-1 text-red-600 text-left">Logout</button>}
         </div>
       )}
     </nav>

@@ -1,12 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
 import { User, Mail, Lock, ShoppingBag, Store } from 'lucide-react';
 
 export default function RegisterPage() {
-  const { register } = useAuth();
+  const { register, user } = useAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) navigate(user.role === 'seller' ? '/seller/dashboard' : '/');
+  }, [user, navigate]);
   const [form, setForm] = useState({ name: '', email: '', password: '', role: 'buyer' });
   const [loading, setLoading] = useState(false);
 
